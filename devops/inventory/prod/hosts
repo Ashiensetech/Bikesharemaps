@@ -1,0 +1,1 @@
+host1 ansible_host=34.207.183.227 ansible_connection=ssh ansible_user=ubuntu ansible_ssh_private_key_file=./keys/mh_nv_test.pem ansible_python_interpreter=/usr/bin/python3

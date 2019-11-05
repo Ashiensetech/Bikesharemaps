@@ -1,0 +1,836 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800');
+html, body {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+   font-family: 'Nunito', sans-serif  !important;
+   font-size: 14px !important;
+   font-weight: 600;
+}
+#map {
+   width: 100%;
+   height: 100%;
+}
+#overlay {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background-color: rgba(0,0,0,0.4);
+   background-size: 100% 60%;
+   background-image: url(../img/loading.svg);
+   background-repeat: no-repeat;
+   z-index: 1000;
+   color: white;
+}
+
+@media screen {
+   .icon-bike, .icon-bike-none {
+       background: transparent url(../img/icon-bike.svg);
+       background-position: 0 0;
+       background-size: 52px 50px !important;
+       background-repeat: none;
+       margin: 0;
+       height: 50px;
+       width: 52px;
+   }
+   .icon-bike .bikecount{
+       position: absolute;
+       top: -3px;
+       right: -15px;
+       left: auto;
+       font-size: 9px;
+       background: #cd2700 !important;
+       padding: 1px 6px;
+       color: #fff !important;
+       border: 1px solid #fff !important;
+       border-radius: 10px;
+   }
+    .icon-bike-none .bikecount{
+       position: absolute;
+       top: -3px;
+       right: -15px;
+       left: auto;
+       font-size: 9px;
+       background: #fff !important;
+       padding: 1px 6px;
+        color: #cd2700 !important;
+        border: 1px solid #cd2700 !important;
+       border-radius: 10px;
+   }
+
+   .icon-bike-none {
+      background: url(../img/icon-bike.svg);
+      background-position: 0 0;
+      background-size: 52px 50px !important;
+      background-repeat: none;
+   }
+   /*=============*/
+
+    .icon-watercraft, .icon-watercraft-none {
+        background: transparent url(../img/icon-watercraft.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-watercraft .bikecount{
+        position: absolute;
+        top: -3px;
+        right: -15px;
+        left: auto;
+        font-size: 9px;
+        background: #0b2a3d !important;
+        padding: 1px 6px;
+        color: #fff !important;
+        border: 1px solid #fff !important;
+        border-radius: 10px;
+    }
+    .icon-watercraft-none .bikecount{
+        position: absolute;
+        top: -3px;
+        right: -15px;
+        left: auto;
+        font-size: 9px;
+        background: #fff !important;
+        padding: 1px 6px;
+        color: #0b2a3d !important;
+        border: 1px solid #0b2a3d !important;
+        border-radius: 10px;
+    }
+
+    .icon-watercraft-none {
+        background: url(../img/icon-watercraft.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+    }
+
+   /*=============*/
+
+    /*=============*/
+
+    .icon-event, .icon-event-none {
+        background: transparent url(../img/icon-event.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-event .bikecount{
+        position: absolute;
+        top: -3px;
+        right: -15px;
+        left: auto;
+        font-size: 9px;
+        background: #f3a800 !important;
+        padding: 1px 6px;
+        color: #fff !important;
+        border: 1px solid #fff !important;
+        border-radius: 10px;
+    }
+    .icon-event-none .bikecount{
+        position: absolute;
+        top: -3px;
+        right: -15px;
+        left: auto;
+        font-size: 9px;
+        background: #fff !important;
+        padding: 1px 6px;
+        color: #f3a800 !important ;
+        border: 1px solid #f3a800 !important;
+        border-radius: 10px;
+    }
+
+    .icon-event-none {
+        background: url(../img/icon-event.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+    }
+
+    /*=============*/
+
+   .none .bikecount{
+       background: #cd2700;
+   }
+
+   .bikecount {
+      position: absolute;
+      top: -4px;
+      left: 2px;
+      font-size: 170%;
+   }
+
+   .standname {
+      position: absolute;
+      bottom: -3px;
+      left: 2px;
+      font-size: 75%;
+   }
+   /*========= New ArrowHeads============*/
+    .icon-lodging {
+        background: transparent url(../img/icon-lodging.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-shopping {
+        background: transparent url(../img/icon-shopping.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-adventure {
+        background: transparent url(../img/icon-adventure.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-food-dining {
+        background: transparent url(../img/icon-food-dining.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-grocery-fuel {
+        background: transparent url(../img/icon-grocery-fuel.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+    .icon-services {
+         background: transparent url(../img/icon-services.svg);
+         background-position: 0 0;
+         background-size: 52px 50px !important;
+         background-repeat: none;
+         margin: 0;
+         height: 50px;
+         width: 52px;
+     }
+    .icon-culture {
+        background: transparent url(../img/icon-culture.svg);
+        background-position: 0 0;
+        background-size: 52px 50px !important;
+        background-repeat: none;
+        margin: 0;
+        height: 50px;
+        width: 52px;
+    }
+
+}
+
+.list-inline li {
+   vertical-align: top;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+
+
+
+/* New styles */
+
+.bike-name-new{
+    float: left;
+    background: #006d8a;
+    font-size: 15px;
+    color: #fff;
+    padding: 3px 10px;
+}
+.btn{
+    border-radius: 0px !important;
+}
+.btn-primary{
+    border-radius: 0px !important;
+    background: #006d8a;
+}
+.btn-full-w{
+    width: 100% !important;
+}
+.return-container{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    background: #e8e8e8;
+    padding: 10px;
+}
+.no-margin{
+    margin: 0px !important;
+}
+.watch-container{
+    margin-top: 20px;
+    text-align: right;
+}
+.watch-container a{
+    background: #006d8a;
+    border-radius: 20px !important;
+    color: #fff;
+}
+.watch-container a:hover{
+    color: #fff;
+}
+.watch-container a span:hover{
+    color: #fff;
+}
+.form-control{
+    border-radius: 0px;
+    border: 2px solid #d8d8d8;
+}
+.number-nav{
+    margin-top: 15px;
+}
+
+.number-nav .btn {
+    border-radius: 0px !important;
+    margin-right: 8px;
+    font-size: 13px;
+    padding: 5px 7px;
+    margin-bottom: 10px;
+}
+#standinfo{
+    margin-bottom: 6px;
+    margin-top: 20px;
+    padding: 0px;
+    font-weight: 800;
+}
+#standinfo a{
+    color: #000;
+}
+div#standphoto img {
+    box-shadow: 2px 2px 10px -2px #adadad;
+    border: 4px solid #fff;
+}
+#standcount{
+    font-size: 18px;
+    border-radius: 0px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.leaflet-sidebar .close.close-left{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #199e36;
+    color: #fff;
+    font-size: 25px;
+    padding: 5px;
+    line-height: 35px;
+    border-radius: 32px;
+    opacity: 1;
+    top: 3px;
+    border: 3px solid #fff;
+    right: 15px;
+}
+.collapse-left{
+    background-color: #006d8a !important;
+    background-size: 30px 30px  !important;
+    width: 40px  !important;
+    height: 40px  !important;
+    color: #fff  !important;
+    text-align: center  !important;
+    line-height: 34px  !important;
+    border-radius: 5px  !important;
+    box-shadow: 1px 1px 1px #a2a2a2  !important;
+    border: 2px solid #fff  !important;
+}
+.list-cstm-top{
+    background: #006d8a;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+}
+.list-cstm-top a{
+    color: #fff;
+}
+.btn-top-plus{
+    padding: 1px 4px 0px 4px;
+    font-size: 10px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+.standname {
+    position: absolute;
+    bottom: 115%;
+    left: -50%;
+    right: 0px;
+    font-size: 70%;
+    width: 100px;
+    background: #ffffff;
+    color: #212121;
+    padding: 2px;
+    text-align: center;
+    padding: 3px;
+    box-shadow: 0px 4px 24px -4px #b9b9b9;
+    border-radius: 5px;
+}
+
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    border: 4px solid #f5f5f5;
+}
+.standname {
+    position: absolute;
+    bottom: 115%;
+    left: -50%;
+    right: 0px;
+    font-size: 70%;
+    width: 100px;
+    background: #ffffff;
+    color: #212121;
+    padding: 2px;
+    text-align: center;
+    padding: 3px;
+    box-shadow: 0px 4px 24px -4px #b9b9b9;
+    border-radius: 5px;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+/*.arrow_box:after {*/
+    /*border-color: rgba(255, 255, 255, 0);*/
+    /*border-top-color: #ffffff;*/
+    /*border-width: 30px;*/
+    /*margin-left: -30px;*/
+/*}*/
+.arrow_box:before {
+    border-color: rgba(245, 245, 245, 0);
+    border-top-color: #f5f5f5;
+    border-width: 12px;
+    margin-left: -16px;
+}
+.leaflet-div-icon{
+    height: 50px !important;
+    width: 40px !important;
+    border: 0px !important;
+}
+.bikecount {
+    position: absolute;
+    top: -7px;
+    right: 0px;
+    left: auto;
+    font-size: 9px;
+    background: #0b2a3d;
+    padding: 1px 6px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    left: 0;
+    z-index: 9999 !important;
+    background-color: #000;
+}
+.rent-confirmation-popup.modal{
+
+    width: 460px !important;
+    left: 0px !important;
+    z-index: 99999 !important;
+}
+.return-bike-modal.modal, .thanks-modal.modal {
+    width: 460px !important;
+    left: 0px !important;
+    z-index: 99999 !important;
+}
+.modal {
+    z-index: 99999 !important;
+}
+.rent-confirmation-popup .modal-header{
+    padding-bottom: 0px;
+    border: 0px !Important;
+}
+.rent-confirmation-popup{
+    text-align: center !Important;
+}
+.rent-confirmation-popup span.alert-sign {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0px auto 15px auto;
+    background: url('../images/exclm.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.rent-confirmation-popup .modal-dialog.modal-sm {
+    padding: 10px;
+    background: #fff;
+}
+.rent-confirmation-popup .modal-content {
+    box-shadow: unset;
+    border: 2px solid #fbae5d;
+}
+.rent-confirmation-popup .modal-footer{
+    border: 0px;
+}
+.rent-confirmation-popup .modal-body {
+    padding: 0px 15px;
+}
+.return-bike-modal .modal-dialog, 
+.thanks-modal .modal-dialog {
+    padding: 10px;
+    background: #fff;
+}
+.return-bike-modal .modal-content, 
+.thanks-modal .modal-content {
+    box-shadow: unset;
+    border: 2px solid #fbae5d;
+}
+.thanks-modal .modal-body{
+  padding: 15px !important;
+}
+.return-bike-modal .modal-body, 
+.thanks-modal .modal-body {
+    padding-bottom: 0px;
+        text-align: center;
+    font-size: 18px;
+}
+.thanks-modal .modal-footer{
+  display: none;
+}
+.return-bike-modal .modal-footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 0px solid #e5e5e5;
+}
+.display-br{
+    display: none;
+}
+.navbar-inverse .navbar-toggle{
+    border-color: #fff !important;
+}
+.navbar-inverse .navbar-toggle i{
+    color: #fff;
+}
+.credit-btn-wrap button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+@media screen and (max-width: 767px) {
+
+    .leaflet-sidebar .close.close-left {
+        top: 10px;
+    }
+    #rentedbikes{
+        display: none;
+    }
+    #standactions button{
+        width: 100%;
+    }
+    .rent-confirmation-popup.modal{
+        width: 100% !important;
+    }
+    .display-br{
+        display: block;
+    }
+    .nav-tab-style>li>a{
+        margin-bottom: 3px;
+    }
+    .nav-tab-style>li{
+        width: 49%;
+    }
+    .credit-btn-wrap button{
+        width: 100%;
+    }
+    .rent-confirmation-popup.modal{
+        min-width: 320px !important;
+        width: 100% !important;
+    }
+    .return-bike-modal.modal, .thanks-modal.modal {
+        min-width: 320px !important;
+        width: 100% !important;
+    }
+}
+/* .leaflet-sidebar > .leaflet-control{
+    background: #f3f3f3 !important;
+} */
+/* New styles */
+
+
+/* Style the Report tab */
+.report-tab {
+    overflow: hidden;
+    border: 0;
+    background-color: none;
+    margin: 14px 0px
+}
+
+/* Style the buttons inside the tab */
+.report-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+/* Change background color of buttons on hover */
+.report-tab button:hover {
+    background-color: #ddd;
+}
+
+.report-tab button.refresh-btn {
+    border-radius: 0px !important;
+    background: #006d8a !important;
+}
+
+.report-tab button.refresh-btn:hover {
+    background-color: #2d6ca2 !important;
+    background-position: 0 -15px !important;
+}
+
+/* Create an active/current tablink class */
+.report-tab button.report-active {
+    background-color: #5d5d5d;
+    color: #fff;
+}
+
+/* Style the tab content */
+.report-tabcontent {
+    display: none;
+    padding: 0px;
+    /*border: 1px solid #ccc;*/
+    border-top: none;
+}
+.dtable-cl {
+    margin: 20px 0px;
+}
+.fleet-btn-wrap button{
+    margin-bottom: 20px;
+  }
+@media screen and (max-width: 767px){
+  .text-xs-center{
+    text-align: center;
+  }
+  .fleet-btn-wrap button{
+    width: 32% !important;
+  }
+
+}
+.report-contents .panel-title:after {
+    /*content: '';*/
+    /*position: absolute;*/
+    /*width: 100px;*/
+    /*height: 2px;*/
+    /*background: #64abbd;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+}
+.report-contents .panel-heading {
+    background: #4b91b1;
+    border: 2px solid #fff;
+}
+.report-contents .panel-title {
+    font-size: 16px;
+    color: #ffffff;
+    position: relative;
+    padding-bottom: 0px;
+    text-transform: capitalize;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+.report-contents .panel:before {
+    /*content: '';*/
+    /*position: absolute;*/
+    /*width: 3px;*/
+    /*height: 100%;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*background: #006d8a;*/
+}
+.report-contents .panel {
+    box-shadow: 0 1px 17px 1px rgba(95, 95, 95, 0.27);
+    position: relative;
+    min-height: 450px;
+}
+.report-contents .select2-container {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+.edit-user-modal .modal-title{
+      padding-top: 8px;
+    font-weight: bold;
+    color: #006d8a;
+}
+.cstm-fbtn{
+    white-space: normal;
+    word-wrap: break-word;
+    float: none !important;
+    padding: 8px 12px !important;
+}
+.report-btn-grp{
+  display: block !important;
+  text-align: center;
+}
+.cstm-label{
+  padding-top: 5px;
+}
+#user_stats_report .panel {
+    margin-top: 20px;
+}
+.trent-panel .panel-body {
+    height: 387px;
+    overflow: hidden;
+}
+.trps-panel .panel-body{
+  height: 235px;
+  overflow: hidden;
+}
+.nav-tab-style>li>a{
+    background: #445861;
+    color: #fff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.nav-tab-style>li.active>a {
+    color: #fff;
+    cursor: default;
+    background-color: #3ca5d6;
+    border: 1px solid #34a8dc;
+    border-bottom-color: transparent;
+}
+.nav-tab-style>li.active>a:hover{
+    color: #fff;
+    cursor: default;
+    background-color: #3ca5d6;
+    border: 1px solid #34a8dc;
+    border-bottom-color: transparent;
+}
+.nav-tab-style>li.active>a:focus{
+    color: #fff;
+    cursor: default;
+    background-color: #3ca5d6;
+    border: 1px solid #34a8dc;
+    border-bottom-color: transparent;
+}
+.nav-tab-style>li>a:hover, .nav-tab-style>li>a:focus {
+    text-decoration: none;
+    background-color: #4f9bca;
+    border-color: #4f9bca;
+}
+.image-holder{
+    position: relative;
+    width: 200px;
+}
+.image-holder i{
+    color: #fff;
+    font-size: 3em;
+    z-index: 99;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+/* Help*/
+
+.user-help-data .panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #EEEEEE;
+}
+
+.user-help-data .panel-default > .panel-heading {
+    padding: 0;
+    border-radius: 0;
+    color: #212121;
+    background-color: #FAFAFA;
+    border-color: #EEEEEE;
+}
+
+.user-help-data .panel-title {
+    font-size: 14px;
+}
+
+.user-help-data .panel-title > a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.user-help-data .more-less {
+    float: right;
+    color: #212121;
+}
+
+.user-help-data .panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #EEEEEE;
+}
+
+/*======= Arrowheads Button ==========*/
+
+.btn-lodging {
+    background-color: #afafae !important;
+    color: #212121 !important;
+}
+.btn-shopping {
+    background-color: #196e29 !important;
+    color: #fff !important;
+}
+.btn-adventure {
+    background-color: #e98821 !important;.
+    color: #fff !important;
+}
+.btn-food-dining {
+    background-color: #6d2099 !important;
+    color: #fff !important;
+}
+.btn-grocery-fuel {
+    background-color: #212121 !important;
+    color: #fff !important;
+}
+.btn-services {
+    background-color: #24cd50 !important;
+    color: #fff !important;
+}
+.btn-culture {
+    background-color: #dedede !important;
+    color: #212121 !important;
+}
+
+.brname{
+    color: #ff4545 !important;
+    font-size: 30px !important;
+    text-shadow: none !important;
+}

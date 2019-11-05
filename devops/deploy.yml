@@ -1,0 +1,68 @@
+- name: deployment
+  hosts: host1
+  # vars_files:
+  #   - "vars/{{ function }}.yml"
+  #   - "vars/{{ env }}.yml"
+  tasks:
+    - name: sync src directory with remote
+      synchronize:
+        src: ../../
+        dest: /home/ubuntu/bikesharemaps
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.gitignore"
+          - "--exclude=.idea"
+          - "--exclude=devops"
+          - "--exclude=INSTALL.md"
+          - "--exclude=README.md"
+          - "--exclude=vids"
+      register: sync_out
+    - debug: msg={{ sync_out }}
+
+    - name: copy nginx conf
+      become: yes
+      become_method: sudo
+      become_user: root
+      synchronize:
+        src: ./bikesharemaps.conf
+        dest: /etc/nginx/sites-available/bikesharemaps.conf
+      register: nginx_out
+    - debug: msg={{ nginx_out }}
+
+    - name: remove nginx default site
+      become: yes
+      become_method: sudo
+      become_user: root
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      register: nginx_rm_out
+    - debug: msg={{ nginx_rm_out }}
+
+    - name: link nginx conf
+      become: yes
+      become_method: sudo
+      become_user: root
+      file:
+        src: /etc/nginx/sites-available/bikesharemaps.conf
+        dest: /etc/nginx/sites-enabled/bikesharemaps.conf
+        remote_src: yes
+        state: link
+      register: nginx_ln_out
+    - debug: msg={{ nginx_ln_out }}
+
+    - name: restart nginx
+      become: yes
+      become_method: sudo
+      become_user: root
+      service: name=nginx state=restarted
+      register: nginx_restart_out
+    - debug: msg={{ nginx_restart_out }}
+
+    - name: restart php7.2-fpm
+      become: yes
+      become_method: sudo
+      become_user: root
+      service: name=php7.2-fpm state=restarted
+      register: phpfpm_restart_out
+    - debug: msg={{ phpfpm_restart_out }}
